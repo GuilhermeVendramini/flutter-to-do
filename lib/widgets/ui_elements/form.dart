@@ -7,7 +7,7 @@ class Email extends StatelessWidget{
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'E-Mail',
+        labelText: 'E-MAIL',
         filled: true,
         fillColor: Colors.white
       ),
@@ -28,7 +28,7 @@ class Password extends StatelessWidget {
   Widget  build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Password',
+        labelText: 'PASSWORD',
         filled: true,
         fillColor: Colors.white
       ),

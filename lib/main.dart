@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
       title: "To do",
       initialRoute: routes.getHome(),
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.red,
-          accentColor: Colors.deepPurple,
-          buttonColor: Colors.deepPurple
+        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: Colors.teal,
+        accentColor: Colors.white,
+        buttonColor: Colors.teal[400],
       ),
       routes: routes.getRoutes(),
       onUnknownRoute: (RouteSettings settings) {

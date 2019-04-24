@@ -16,16 +16,21 @@ class Login extends StatelessWidget{
             children: <Widget>[
               Email(),
               SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
               Password(),
               SizedBox(
-                height: 10.0,
+                height: 40.0,
               ),
-              RaisedButton(
-                textColor: Colors.white,
-                child: Text('LOGIN'),
-                onPressed: () => {},
+              SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  textColor: Colors.white,
+                  child: Text('LOGIN'),
+                  onPressed: () => {
+                    Navigator.pushReplacementNamed(context, '/task-list'),
+                  },
+                ),
               ),
             ],
           ),

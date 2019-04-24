@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './pages/user/login.dart';
+import './pages/task/task_list.dart';
 
 class Routes {
 
@@ -11,6 +12,7 @@ class Routes {
     Map<String, WidgetBuilder> routes;
     routes = {
       '/': (BuildContext context) => new LoginPage(),
+      '/task-list': (BuildContext context) => new TaskListPage(),
     };
     return routes;
   }
