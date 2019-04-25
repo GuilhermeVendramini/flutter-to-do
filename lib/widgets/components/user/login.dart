@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../ui_elements/form.dart';
+import '../../ui_elements/form.dart';
 
 class Login extends StatelessWidget{
 
@@ -24,6 +24,7 @@ class Login extends StatelessWidget{
               ),
               SizedBox(
                 width: double.infinity,
+                height: 60.0,
                 child: RaisedButton(
                   textColor: Colors.white,
                   child: Text('LOGIN'),

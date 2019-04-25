@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import './routes.dart';
+import 'package:scoped_model/scoped_model.dart';
+import './scoped/tasks.dart';
+//import 'package:flutter/rendering.dart';
 
 void main() {
-  // debugPaintSizeEnabled = true;
-  // debugPaintBaselinesEnabled = true;
-  // debugPaintPointersEnabled = true;
+  //debugPaintSizeEnabled = true;
+  //debugPaintBaselinesEnabled = true;
+  //debugPaintPointersEnabled = true;
   runApp(MyApp());
 }
 
@@ -19,21 +22,25 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     Routes routes = new Routes();
-    return MaterialApp(
-      title: "To do",
-      initialRoute: routes.getHome(),
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.teal,
-        accentColor: Colors.white,
-        buttonColor: Colors.teal[400],
+    return ScopedModel<TasksModel> (
+      model: TasksModel(),
+      child:
+      MaterialApp(
+        title: "To do",
+        initialRoute: routes.getHome(),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          primarySwatch: Colors.teal,
+          accentColor: Colors.black,
+          buttonColor: Colors.teal[400],
+        ),
+        routes: routes.getRoutes(),
+        onUnknownRoute: (RouteSettings settings) {
+          return MaterialPageRoute(
+              builder: (BuildContext context) => routes.getHome()
+          );
+        },
       ),
-      routes: routes.getRoutes(),
-      onUnknownRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-            builder: (BuildContext context) => routes.getHome()
-        );
-      },
     );
   }
 }

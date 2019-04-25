@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/components/login.dart';
+import 'package:flutter_to_do/widgets/components/user/login.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Login(),
                   SizedBox(
-                    height: 10.0,
+                    height: 40.0,
                   ),
                   Text("Don't have an account? Sign up"),
                 ],

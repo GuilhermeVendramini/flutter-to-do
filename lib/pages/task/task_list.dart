@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/components/login.dart';
+import '../../widgets/components/task/task_list.dart';
 
 class TaskListPage extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class TaskListPage extends StatefulWidget {
 
 class _TaskListPageState extends State<TaskListPage> {
   bool _value = false;
-  void _onChanged(bool value) => setState(() => _value = value);
+  String _label = 'OFF';
 
   @override
   Widget build(BuildContext context) {
@@ -23,37 +23,49 @@ class _TaskListPageState extends State<TaskListPage> {
           Container(
             child: Row(
               children: <Widget>[
-                Text('ON', style: TextStyle(color: Colors.black)),
+                Text(_label, style: TextStyle(color: Colors.black)),
                 Switch(
                   value: _value,
-                  onChanged: _onChanged,
+                  onChanged: (bool value) {
+                    setState(() {
+                      (value)?_label = 'ON':_label = 'OFF';
+                      _value = value;
+                    });
+                  },
                   activeColor: Theme.of(context).primaryColor,
-                )
+                ),
               ],
             ),
           ),
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(10.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Image.asset('assets/images/mark.png', width: 100.0,),
-                  SizedBox(
-                    height: 40.0,
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            /// ---------------------------------- //
+            Column(
+              children: <Widget>[
+                Container(
+                  alignment: FractionalOffset.center,
+                  child:
+                  CircleAvatar(backgroundImage:  AssetImage('assets/images/avatar.png'), radius: 60.0),
+                ),
+                Container(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Hello, Anne!'),
                   ),
-                  Login(),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text("Don't have an account? Sign up"),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
+            Expanded(
+              child:  TasksList(),
+            ),
+            /// ---------------------------------- //
+          ],
         ),
       ),
     );
