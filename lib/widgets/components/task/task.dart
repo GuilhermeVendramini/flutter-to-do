@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../../scoped/tasks.dart';
+import '../../../models/task.dart';
 
 class TaskListHeader extends StatelessWidget {
 
@@ -84,12 +85,49 @@ class TasksList extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            return Text(model.tasks[index].title, style: TextStyle(fontSize: 22.0));
-              //Text(model.tasks[index].title);
+            return TaskListCards(model, index);
           },
           itemCount: model.tasks.length,
         );
       },
     );
+  }
+}
+
+class TaskListCards extends StatelessWidget {
+  final TasksModel _model;
+  final int _index;
+
+  TaskListCards(this._model, this._index);
+
+  @override
+  Widget  build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      shape: Border(right: BorderSide(width: 4.0, color: Colors.green[200])),
+      child: InkWell(
+        onTap: () {
+          print("tapped");
+        },
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(bottom: 8.0),
+                child:
+                  Text(
+                      _model.tasks[_index].title,
+                      style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)
+                  ),
+              ),
+              Text(_model.tasks[_index].description),
+            ],
+          ),
+        ),
+      ),
+    );
+    //Text(_model.tasks[_index].title, style: TextStyle(fontSize: 22.0));
   }
 }
