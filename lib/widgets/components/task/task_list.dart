@@ -9,6 +9,8 @@ class TasksList extends StatelessWidget {
     return ScopedModelDescendant<TasksModel>(
       builder: (BuildContext context, Widget child, TasksModel model) {
         return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return Text(model.tasks[index].title, style: TextStyle(fontSize: 22.0));
               //Text(model.tasks[index].title);
