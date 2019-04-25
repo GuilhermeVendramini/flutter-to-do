@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../../scoped/tasks.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../../models/task.dart';
 
 class TaskListHeader extends StatelessWidget {
@@ -41,7 +42,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.red[100], width: 1),
+              Border.all(color: Colors.red[200], width: 1),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -58,7 +59,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.green[100], width: 1),
+              Border.all(color: Colors.green[200], width: 1),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -85,7 +86,10 @@ class TasksList extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            return TaskListCards(model, index);
+            return Container(
+              margin: EdgeInsets.only(bottom: 10.0),
+              child: TaskListCards(model, index),
+            );
           },
           itemCount: model.tasks.length,
         );
@@ -102,31 +106,57 @@ class TaskListCards extends StatelessWidget {
 
   @override
   Widget  build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      shape: Border(right: BorderSide(width: 4.0, color: Colors.green[200])),
-      child: InkWell(
-        onTap: () {
-          print("tapped");
-        },
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 8.0),
-                child:
-                  Text(
-                      _model.tasks[_index].title,
-                      style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)
-                  ),
-              ),
-              Text(_model.tasks[_index].description),
-            ],
+    return Slidable(
+      delegate: new SlidableDrawerDelegate(),
+      actionExtentRatio: 0.25,
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            right: BorderSide(width: 3.0, color: Colors.teal),
+            bottom: BorderSide(width: 1.0, color: Colors.teal),
           ),
         ),
+        //color: Colors.white,
+        margin: EdgeInsets.only(right: 0.0, top: 0.0, bottom: 00.0),
+        child: InkWell(
+          onTap: () {
+            print("tapped");
+          },
+          child: Container(
+            child: ListTile(
+              title: Padding(
+                padding: EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  _model.tasks[_index].title,
+                  style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)
+                ),
+              ),
+              subtitle: Text(_model.tasks[_index].description),
+            ),
+          ),
+        ),
+        //),
       ),
+      secondaryActions: <Widget>[
+        IconSlideAction(
+          caption: 'More',
+          color: Colors.teal,
+          icon: Icons.more_horiz,
+          onTap: () => {},
+        ),
+        IconSlideAction(
+          caption: 'Report',
+          color: Colors.red[200],
+          icon: Icons.announcement,
+          onTap: () => {},
+        ),
+        IconSlideAction(
+          caption: 'Interdict',
+          color: Colors.yellow[200],
+          icon: Icons.block,
+          onTap: () => {},
+        ),
+      ],
     );
     //Text(_model.tasks[_index].title, style: TextStyle(fontSize: 22.0));
   }
