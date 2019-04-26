@@ -41,7 +41,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.red[200], width: 4),
+              Border.all(color: Colors.red[400], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -58,7 +58,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.green[200], width: 4),
+              Border.all(color: Colors.green[400], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -143,17 +143,18 @@ class TaskListCards extends StatelessWidget {
           icon: Icons.more_horiz,
           onTap: () {
             Navigator.pushReplacementNamed(context, '/task/' + _index.toString());
+            _model.selectTask(_index);
           },
         ),
         IconSlideAction(
           caption: 'Report',
-          color: Colors.red[200],
+          color: Colors.red[400],
           icon: Icons.announcement,
           onTap: () => {},
         ),
         IconSlideAction(
           caption: 'Interdict',
-          color: Colors.yellow[200],
+          color: Colors.yellow[400],
           icon: Icons.block,
           onTap: () => {},
         ),
@@ -190,6 +191,39 @@ class TaskPageHeader extends StatelessWidget {
           ),
         );
       }
+    );
+  }
+}
+
+class TaskPageBox extends StatelessWidget {
+
+  @override
+  Widget  build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(children: <Widget>[
+            Icon(Icons.beenhere, size: 50.0, color: Colors.green[400]),
+            Text('Conclude', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(children: <Widget>[
+            Icon(Icons.announcement, size: 50.0, color:  Colors.red[400]),
+            Text('Report', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(children: <Widget>[
+            Icon(Icons.block, size: 50.0, color: Colors.yellow[400]),
+            Text('Interdict', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],),
+        ),
+      ],
     );
   }
 }

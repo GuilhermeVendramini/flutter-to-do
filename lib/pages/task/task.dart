@@ -25,8 +25,21 @@ class _TaskPage extends State<TaskPage> {
             TaskPageHeader(),
           ];
         },
-        body: Center(
-          child: Text("Sample Text"),
+        body: ListView(
+          children: <Widget>[
+            TaskPageBox(),
+            SizedBox(
+              height: 10.0,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 50,
+              itemBuilder: (context,index) {
+                return Text("List Item: " + index.toString());
+              },
+            ),
+          ],
         ),
       ),
     ),);

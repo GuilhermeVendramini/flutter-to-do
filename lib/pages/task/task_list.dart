@@ -48,6 +48,9 @@ class _TaskListPageState extends State<TaskListPage> {
             children: <Widget>[
               TaskListHeader(),
               TaskListBoxes(),
+              SizedBox(
+                height: 10.0,
+              ),
               TasksList(),
             ],
           ),
