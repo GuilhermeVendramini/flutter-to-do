@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../../scoped/tasks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import '../../../models/task.dart';
 
 class TaskListHeader extends StatelessWidget {
 
@@ -42,7 +41,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.red[200], width: 1),
+              Border.all(color: Colors.red[200], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -59,7 +58,7 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.green[200], width: 1),
+              Border.all(color: Colors.green[200], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
@@ -120,7 +119,7 @@ class TaskListCards extends StatelessWidget {
         margin: EdgeInsets.only(right: 0.0, top: 0.0, bottom: 00.0),
         child: InkWell(
           onTap: () {
-            print("tapped");
+            Navigator.pushReplacementNamed(context, '/task-list-items');
           },
           child: Container(
             child: ListTile(
@@ -142,7 +141,9 @@ class TaskListCards extends StatelessWidget {
           caption: 'More',
           color: Colors.teal,
           icon: Icons.more_horiz,
-          onTap: () => {},
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/task-list-items');
+          },
         ),
         IconSlideAction(
           caption: 'Report',
