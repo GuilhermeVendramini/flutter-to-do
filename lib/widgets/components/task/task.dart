@@ -115,11 +115,10 @@ class TaskListCards extends StatelessWidget {
             bottom: BorderSide(width: 1.0, color: Colors.teal),
           ),
         ),
-        //color: Colors.white,
         margin: EdgeInsets.only(right: 0.0, top: 0.0, bottom: 00.0),
         child: InkWell(
           onTap: () {
-            Navigator.pushReplacementNamed(context, '/task-list-items');
+            Navigator.pushReplacementNamed(context, '/task/' + _model.tasks[_index].id.toString());
           },
           child: Container(
             child: ListTile(
@@ -159,6 +158,5 @@ class TaskListCards extends StatelessWidget {
         ),
       ],
     );
-    //Text(_model.tasks[_index].title, style: TextStyle(fontSize: 22.0));
   }
 }

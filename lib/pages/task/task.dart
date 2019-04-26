@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 //import '../../widgets/components/task/task.dart';
 
-class TaskListItemsPage extends StatefulWidget {
+class TaskPage extends StatefulWidget {
+  final int taskIndex;
+  TaskPage(this.taskIndex);
+
   @override
   State<StatefulWidget> createState() {
-    return _TaskListItemsPage();
+    return _TaskPage();
   }
 }
 
-class _TaskListItemsPage extends State<TaskListItemsPage> {
+class _TaskPage extends State<TaskPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(onWillPop: () async {

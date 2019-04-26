@@ -35,6 +35,9 @@ class _MyAppState extends State<MyApp> {
           buttonColor: Colors.teal[400],
         ),
         routes: routes.getRoutes(),
+        onGenerateRoute: (RouteSettings settings) {
+          return routes.getOnGenerateRoute(settings);
+        },
         onUnknownRoute: (RouteSettings settings) {
           return MaterialPageRoute(
               builder: (BuildContext context) => routes.getHome()
