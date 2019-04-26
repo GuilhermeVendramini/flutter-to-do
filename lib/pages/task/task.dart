@@ -31,14 +31,7 @@ class _TaskPage extends State<TaskPage> {
             SizedBox(
               height: 10.0,
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 50,
-              itemBuilder: (context,index) {
-                return Text("List Item: " + index.toString());
-              },
-            ),
+            TaskListItem(),
           ],
         ),
       ),

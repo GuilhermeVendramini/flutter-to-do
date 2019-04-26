@@ -49,11 +49,17 @@ class _TaskListPageState extends State<TaskListPage> {
               TaskListHeader(),
               TaskListBoxes(),
               SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
               TasksList(),
             ],
           ),
+        ),
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+          mini: false,
+          child: new Icon(Icons.photo_camera),
         ),
       )
     );

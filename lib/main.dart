@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.teal,
-          accentColor: Colors.black,
+          accentColor: Colors.teal[400],
           buttonColor: Colors.teal[400],
         ),
         routes: routes.getRoutes(),

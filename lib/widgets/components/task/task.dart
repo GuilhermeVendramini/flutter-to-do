@@ -41,14 +41,14 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.red[400], width: 4),
+              Border.all(color: Colors.red[200], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: <Widget>[
                 Text('To do'),
-                Text('10', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('10', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
               ],
             ),
           ),
@@ -58,14 +58,14 @@ class TaskListBoxes extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border:
-              Border.all(color: Colors.green[400], width: 4),
+              Border.all(color: Colors.green[200], width: 4),
             ),
             margin: const EdgeInsets.all(10.0),
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: <Widget>[
                 Text('Done'),
-                Text('5', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('5', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
               ],
             ),
           ),
@@ -106,13 +106,13 @@ class TaskListCards extends StatelessWidget {
   @override
   Widget  build(BuildContext context) {
     return Slidable(
-      delegate: new SlidableDrawerDelegate(),
+      delegate: SlidableDrawerDelegate(),
       actionExtentRatio: 0.25,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
-            right: BorderSide(width: 3.0, color: Colors.teal),
-            bottom: BorderSide(width: 1.0, color: Colors.teal),
+            right: BorderSide(width: 3.0, color: Color(0xFF80CBC4)),
+            bottom: BorderSide(width: 1.0, color: Color(0xFF80CBC4)),
           ),
         ),
         margin: EdgeInsets.only(right: 0.0, top: 0.0, bottom: 00.0),
@@ -139,7 +139,7 @@ class TaskListCards extends StatelessWidget {
       secondaryActions: <Widget>[
         IconSlideAction(
           caption: 'More',
-          color: Colors.teal,
+          color: Colors.teal[200],
           icon: Icons.more_horiz,
           onTap: () {
             Navigator.pushReplacementNamed(context, '/task/' + _index.toString());
@@ -148,13 +148,13 @@ class TaskListCards extends StatelessWidget {
         ),
         IconSlideAction(
           caption: 'Report',
-          color: Colors.red[400],
+          color: Colors.red[200],
           icon: Icons.announcement,
           onTap: () => {},
         ),
         IconSlideAction(
           caption: 'Interdict',
-          color: Colors.yellow[400],
+          color: Colors.yellow[200],
           icon: Icons.block,
           onTap: () => {},
         ),
@@ -179,7 +179,7 @@ class TaskPageHeader extends StatelessWidget {
             title: Text(model.task.title,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 16.0,
+                fontSize: 20.0,
               )
             ),
             background: Image.asset(
@@ -203,27 +203,61 @@ class TaskPageBox extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(children: <Widget>[
-            Icon(Icons.beenhere, size: 50.0, color: Colors.green[400]),
-            Text('Conclude', style: TextStyle(fontWeight: FontWeight.bold)),
+            Icon(Icons.beenhere, size: 50.0, color: Colors.green[200]),
+            Text('Conclude', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
           ],),
         ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(children: <Widget>[
-            Icon(Icons.announcement, size: 50.0, color:  Colors.red[400]),
-            Text('Report', style: TextStyle(fontWeight: FontWeight.bold)),
+            Icon(Icons.announcement, size: 50.0, color:  Colors.red[200]),
+            Text('Report', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
           ],),
         ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(children: <Widget>[
-            Icon(Icons.block, size: 50.0, color: Colors.yellow[400]),
-            Text('Interdict', style: TextStyle(fontWeight: FontWeight.bold)),
+            Icon(Icons.block, size: 50.0, color: Colors.yellow[200]),
+            Text('Interdict', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
           ],),
         ),
       ],
+    );
+  }
+}
+
+class TaskListItem extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      crossAxisCount: 2,
+      children: List<Widget>.generate(16, (index) {
+        return GridTile(
+          child: Card(
+            color: Colors.grey[50],
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.check_circle, size: 60.0, color: Colors.grey[400]),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                      'Item $index',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)
+                  ),
+                ],
+              ),
+            )
+          ),
+        );
+      }),
     );
   }
 }
