@@ -142,7 +142,7 @@ class TaskListCards extends StatelessWidget {
           color: Colors.teal,
           icon: Icons.more_horiz,
           onTap: () {
-            Navigator.pushReplacementNamed(context, '/task-list-items');
+            Navigator.pushReplacementNamed(context, '/task/' + _index.toString());
           },
         ),
         IconSlideAction(
