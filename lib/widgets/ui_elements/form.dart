@@ -31,6 +31,7 @@ class Password extends StatelessWidget {
         filled: true,
         fillColor: Colors.white
       ),
+      obscureText: true,
       validator: (String value) {
         if (value.isEmpty || value.length < 6) {
           return 'Password invalid';

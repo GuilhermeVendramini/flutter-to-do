@@ -118,7 +118,8 @@ class TaskListCards extends StatelessWidget {
         margin: EdgeInsets.only(right: 0.0, top: 0.0, bottom: 00.0),
         child: InkWell(
           onTap: () {
-            Navigator.pushReplacementNamed(context, '/task/' + _model.tasks[_index].id.toString());
+            Navigator.pushReplacementNamed(context, '/task/' + _index.toString());
+            _model.selectTask(_index);
           },
           child: Container(
             child: ListTile(
@@ -157,6 +158,38 @@ class TaskListCards extends StatelessWidget {
           onTap: () => {},
         ),
       ],
+    );
+  }
+}
+
+class TaskPageHeader extends StatelessWidget {
+
+  @override
+  Widget  build(BuildContext context) {
+    return ScopedModelDescendant<TasksModel>(
+      builder: (BuildContext context, Widget child, TasksModel model) {
+        return SliverAppBar(
+          automaticallyImplyLeading: true,
+          expandedHeight: 200.0,
+          floating: false,
+          pinned: true,
+          flexibleSpace: FlexibleSpaceBar(
+            centerTitle: true,
+            title: Text(model.task.title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              )
+            ),
+            background: Image.asset(
+              model.task.image,
+              fit: BoxFit.cover,
+              color: Colors.black,
+              colorBlendMode: BlendMode.softLight,
+            ),
+          ),
+        );
+      }
     );
   }
 }
